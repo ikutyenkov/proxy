@@ -1,12 +1,12 @@
-class Model {
-
-    constructor(path, data)
-    {
-        this.data = {};
-
-        if (typeof data == 'object' && data)
-            this.data = data;
+class Model
+{
+    constructor(request) {
+        this.instance = false;
+        this.request = request;
+        this.prepared = false;
+        this.executed = false;
     }
+
     async prepare()
     {
         return true;
@@ -14,10 +14,10 @@ class Model {
 
     async execute()
     {
-        if (await this.prepare())
-            return {"error" : false};
+        if (await this.prepare() !== true)
+            return this.prepare();
 
-        return {"error" : true, "error_str" : 'error prepare!'};
+        return {"error" : false};
     }
 }
 

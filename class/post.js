@@ -21,6 +21,11 @@ class Post
     {
         return this.request.body;
     }
+
+    getIndex()
+    {
+        return this.request.path[this.request.path.length - 1];
+    }
 }
 
 module.exports = Post;

@@ -1,16 +1,11 @@
 {
-  "interface" : {
-    "host" : "http://localhost",
-    "port" : 3003
-  },
+  "interface" : {},
   "port" : 8888,
   "body_limit" : "20mb",
   "handlers" : [
     "queue"
   ],
   "queue" : {
-      "controller" : "kafka",
-      "host" : "kafka",
-      "port" : 9092
+    "client" : "proxy"
   }
 }

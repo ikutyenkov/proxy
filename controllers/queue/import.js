@@ -36,7 +36,7 @@ class Import extends Model
         if (this.executed)
             return this.executed;
         if (await this.prepare() && typeof (await this.prepare()).error == 'undefined') {
-            this.executed = (await Queue.send("import", this.request.getBody().headers, this.request.getBody().content));
+            this.executed = (await Queue.send(this.request.getIndex(), this.request.getBody().headers, this.request.getBody().content));
         } else {
             return this.prepared;
         }
